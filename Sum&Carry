@@ -1,0 +1,61 @@
+declare
+proc {Mul Root}
+  P3 P4 P6 C1 P2 P7 C2 P1 P8 C3 P9 P5 P12 P11 P10 P13 C4 C5 C6 P18 P14 P15 P16 P17 C7 C8 C9
+   
+in 
+
+Root=sol(p3:P3 p4:P4 p6:P6 c1:C1 p2:P2 p7:P7 c2:C2 p1:P1 p8:P8 c3:C3 p9:P9 p5:P5 p12:P12 p11:P11 p10:P10 p13:P13 c4:C4 c5:C5 c6:C6 p18:P18 p14:P14 p15:P15 p16:P16 p17:P17 c7:C7 c8:C8 c9:C9)
+    
+   Root ::: 0#9
+   
+%Validaciones para la primera multiplicacion
+   P4 \=: 0   P4 \=: 1   P4 \=: 4   P4 \=: 6   P4 \=: 8   P4 \=: 9
+   P3 \=: 0   P3 \=: 1   P3 \=: 4   P3 \=: 6   P3 \=: 8   P3 \=: 9
+   P6 \=: 0   P6 \=: 1   P6 \=: 4   P6 \=: 6   P6 \=: 8   P6 \=: 9
+   P2 \=: 0   P2 \=: 1   P2 \=: 4   P2 \=: 6   P2 \=: 8   P2 \=: 9
+   P7 \=: 0   P7 \=: 1   P7 \=: 4   P7 \=: 6   P7 \=: 8   P7 \=: 9
+   P1 \=: 0   P1 \=: 1   P1 \=: 4   P1 \=: 6   P1 \=: 8   P1 \=: 9
+   P8 \=: 0   P8 \=: 1   P8 \=: 4   P8 \=: 6   P8 \=: 8   P8 \=: 9
+   P9 \=: 0   P9 \=: 1   P9 \=: 4   P9 \=: 6   P9 \=: 8   P9 \=: 9
+%Validaciones para la segunda multiplicacion
+   P12 \=: 0   P12 \=: 1   P12 \=: 4   P12 \=: 6   P12 \=: 8   P12 \=: 9
+   P11 \=: 0   P11 \=: 1   P11 \=: 4   P11 \=: 6   P11 \=: 8   P11 \=: 9
+   P10 \=: 0   P10 \=: 1   P10 \=: 4   P10 \=: 6   P10 \=: 8   P10 \=: 9
+   P13 \=: 0   P13 \=: 1   P13 \=: 4   P13 \=: 6   P13 \=: 8   P13 \=: 9
+   P5 \=: 0   P5 \=: 1   P5 \=: 4   P5 \=: 6   P5 \=: 8   P5 \=: 9
+
+%Validaciones para el carry de la suma[0 1] y el resultado
+
+   C7 \=:2 C7 \=:3 C7 \=:4 C7 \=:5 C7 \=:6 C7 \=:7 C7 \=:8 C7 \=:9
+   C8 \=:2 C8 \=:3 C8 \=:4 C8 \=:5 C8 \=:6 C8 \=:7 C8 \=:8 C8 \=:9
+   C9 \=:2 C9 \=:3 C9 \=:4 C9 \=:5 C9 \=:6 C9 \=:7 C9 \=:8 C9 \=:9
+   
+   P14 \=: 0   P14 \=: 1   P14 \=: 4   P14 \=: 6   P14 \=: 8   P14 \=: 9
+   P15 \=: 0   P15 \=: 1   P15 \=: 4   P15 \=: 6   P15 \=: 8   P15 \=: 9
+   P16 \=: 0   P16 \=: 1   P16 \=: 4   P16 \=: 6   P16 \=: 8   P16 \=: 9
+   P17 \=: 0   P17 \=: 1   P17 \=: 4   P17 \=: 6   P17 \=: 8   P17 \=: 9
+   P18 \=: 0   P18 \=: 1   P18 \=: 4   P18 \=: 6   P18 \=: 8   P18 \=: 9
+    
+%Primera multiplicacion
+   P4 * P3 =: P6 + 10 * C1
+   P4 * P2 + C1 =: P7 + 10 * C2
+   P4 * P1 + C2 =: P8 + 10 * C3
+   C3 =: P9
+%Segunda multiplicacion
+   P5 * P3 =: P10 + 10 * C4
+   P5 * P2 + C4 =: P11 + 10 * C5
+   P5 * P1 + C5 =: P12 + 10 * C6
+   C6 =: P13
+
+%Suma
+   P6 + 0 =: P14
+   P10 + P7 =: P15 + C7 * 10
+   C7 + P11 + P8 =: P16 + C8 * 10
+   C8 + P9 + P12 =: P17 + C9 * 10
+   C9 + P13 =: P18
+   
+   {FD.distribute ff Root}
+   
+end
+
+{Browse {SearchOne Mul}}
