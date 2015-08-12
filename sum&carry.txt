@@ -1,0 +1,11 @@
+Problema propuesto
+
+Hacer un algortimo de multiplicacion en donde P puede tomar un digito primo en el dominio [2,3,5,7] 
+
+	P P P
+	  P P
+_________________
+      P P P P
+    P P P P   	
+_________________
+    P P P P P 
